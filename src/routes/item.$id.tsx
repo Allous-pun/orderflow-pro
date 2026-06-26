@@ -6,8 +6,10 @@ import { cart } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import type { ModifierOption } from "@/types";
 
+import type { MenuItem } from "@/types";
+
 export const Route = createFileRoute("/item/$id")({
-  loader: ({ params }) => {
+  loader: ({ params }): { item: MenuItem } => {
     const item = menuItems.find((m) => m.id === params.id);
     if (!item) throw notFound();
     return { item };
