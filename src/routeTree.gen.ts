@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as KitchenRouteImport } from './routes/kitchen'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,6 +21,11 @@ import { Route as ItemIdRouteImport } from './routes/item.$id'
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KitchenRoute = KitchenRouteImport.update({
+  id: '/kitchen',
+  path: '/kitchen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/kitchen': typeof KitchenRoute
   '/menu': typeof MenuRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/kitchen': typeof KitchenRoute
   '/menu': typeof MenuRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/kitchen': typeof KitchenRoute
   '/menu': typeof MenuRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/checkout'
+    | '/kitchen'
     | '/menu'
     | '/item/$id'
     | '/order-confirmation/$id'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/checkout'
+    | '/kitchen'
     | '/menu'
     | '/item/$id'
     | '/order-confirmation/$id'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/checkout'
+    | '/kitchen'
     | '/menu'
     | '/item/$id'
     | '/order-confirmation/$id'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
+  KitchenRoute: typeof KitchenRoute
   MenuRoute: typeof MenuRoute
   ItemIdRoute: typeof ItemIdRoute
   OrderConfirmationIdRoute: typeof OrderConfirmationIdRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/menu'
       fullPath: '/menu'
       preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kitchen': {
+      id: '/kitchen'
+      path: '/kitchen'
+      fullPath: '/kitchen'
+      preLoaderRoute: typeof KitchenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
+  KitchenRoute: KitchenRoute,
   MenuRoute: MenuRoute,
   ItemIdRoute: ItemIdRoute,
   OrderConfirmationIdRoute: OrderConfirmationIdRoute,
