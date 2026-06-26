@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WaiterRouteImport } from './routes/waiter'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as KitchenRouteImport } from './routes/kitchen'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -18,6 +19,11 @@ import { Route as OrderTrackingIdRouteImport } from './routes/order-tracking.$id
 import { Route as OrderConfirmationIdRouteImport } from './routes/order-confirmation.$id'
 import { Route as ItemIdRouteImport } from './routes/item.$id'
 
+const WaiterRoute = WaiterRouteImport.update({
+  id: '/waiter',
+  path: '/waiter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/kitchen': typeof KitchenRoute
   '/menu': typeof MenuRoute
+  '/waiter': typeof WaiterRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/kitchen': typeof KitchenRoute
   '/menu': typeof MenuRoute
+  '/waiter': typeof WaiterRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/kitchen': typeof KitchenRoute
   '/menu': typeof MenuRoute
+  '/waiter': typeof WaiterRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/kitchen'
     | '/menu'
+    | '/waiter'
     | '/item/$id'
     | '/order-confirmation/$id'
     | '/order-tracking/$id'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/kitchen'
     | '/menu'
+    | '/waiter'
     | '/item/$id'
     | '/order-confirmation/$id'
     | '/order-tracking/$id'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/kitchen'
     | '/menu'
+    | '/waiter'
     | '/item/$id'
     | '/order-confirmation/$id'
     | '/order-tracking/$id'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   KitchenRoute: typeof KitchenRoute
   MenuRoute: typeof MenuRoute
+  WaiterRoute: typeof WaiterRoute
   ItemIdRoute: typeof ItemIdRoute
   OrderConfirmationIdRoute: typeof OrderConfirmationIdRoute
   OrderTrackingIdRoute: typeof OrderTrackingIdRoute
@@ -136,6 +149,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/waiter': {
+      id: '/waiter'
+      path: '/waiter'
+      fullPath: '/waiter'
+      preLoaderRoute: typeof WaiterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/menu': {
       id: '/menu'
       path: '/menu'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   KitchenRoute: KitchenRoute,
   MenuRoute: MenuRoute,
+  WaiterRoute: WaiterRoute,
   ItemIdRoute: ItemIdRoute,
   OrderConfirmationIdRoute: OrderConfirmationIdRoute,
   OrderTrackingIdRoute: OrderTrackingIdRoute,
