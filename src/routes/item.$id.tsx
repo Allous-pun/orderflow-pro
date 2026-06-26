@@ -30,7 +30,7 @@ export const Route = createFileRoute("/item/$id")({
 });
 
 function ItemDetail() {
-  const { item } = Route.useLoaderData();
+  const { item } = Route.useLoaderData() as { item: MenuItem };
   const navigate = useNavigate();
   const [qty, setQty] = useState(1);
   const [notes, setNotes] = useState("");
