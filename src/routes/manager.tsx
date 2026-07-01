@@ -126,7 +126,7 @@ function ManagerDashboard() {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-primary">${o.total.toFixed(2)}</p>
+                  <p className="font-bold text-primary">Ksh {o.total.toFixed(2)}</p>
                   <p className="text-xs capitalize text-muted-foreground">{o.status}</p>
                 </div>
               </li>
@@ -145,7 +145,7 @@ function ManagerDashboard() {
               <img src={m.image} alt="" className="size-12 rounded-lg object-cover" />
               <div className="flex-1">
                 <p className="text-sm font-semibold">{m.name}</p>
-                <p className="text-xs text-muted-foreground">${m.price.toFixed(2)} · {m.station}</p>
+                <p className="text-xs text-muted-foreground">Ksh {m.price.toFixed(2)} · {m.station}</p>
               </div>
               <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-bold", m.isAvailable ? "bg-success/15 text-success" : "bg-destructive/15 text-destructive")}>
                 {m.isAvailable ? "Available" : "Off"}

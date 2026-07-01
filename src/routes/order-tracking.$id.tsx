@@ -79,7 +79,7 @@ function Tracking() {
                   "bg-muted text-muted-foreground",
                 )}>{i.status}</span>
               </span>
-              <span>${(i.unitPrice * i.quantity).toFixed(2)}</span>
+              <span>Ksh {(i.unitPrice * i.quantity).toFixed(2)}</span>
             </li>
           ))}
         </ul>

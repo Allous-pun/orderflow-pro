@@ -95,7 +95,7 @@ function ItemDetail() {
               </span>
             )}
           </div>
-          <p className="mt-4 text-3xl font-bold text-primary">${unit.toFixed(2)}</p>
+          <p className="mt-4 text-3xl font-bold text-primary">Ksh {unit.toFixed(2)}</p>
 
           {item.modifierGroups.map((g) => (
             <div key={g.id} className="mt-6">
@@ -156,7 +156,7 @@ function ItemDetail() {
               onClick={handleAdd}
               className="flex-1 rounded-full bg-primary px-6 py-3.5 text-base font-bold text-primary-foreground shadow-glow transition hover:opacity-90"
             >
-              Add to cart — ${total.toFixed(2)}
+              Add to cart — Ksh {total.toFixed(2)}
             </button>
           </div>
         </div>

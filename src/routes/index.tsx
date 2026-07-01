@@ -62,7 +62,7 @@ function Landing() {
                   <img src={m.image} alt={m.name} className="h-40 w-full object-cover" />
                   <div className="p-3">
                     <p className="text-sm font-semibold">{m.name}</p>
-                    <p className="text-xs text-muted-foreground">${m.price.toFixed(2)}</p>
+                    <p className="text-xs text-muted-foreground">Ksh {m.price.toFixed(2)}</p>
                   </div>
                 </div>
               ))}

@@ -120,7 +120,7 @@ function WaiterCard({ order }: { order: Order }) {
         ))}
       </ul>
 
-      <p className="mt-3 text-sm font-bold">Total ${order.total.toFixed(2)}</p>
+      <p className="mt-3 text-sm font-bold">Total Ksh {order.total.toFixed(2)}</p>
 
       <div className="mt-4 flex flex-wrap gap-2">
         {allReady && order.status === "ready" && (

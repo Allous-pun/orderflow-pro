@@ -165,15 +165,15 @@ function Checkout() {
             {items.map((i) => (
               <li key={i.cartId} className="flex justify-between gap-3">
                 <span className="text-muted-foreground">{i.quantity}× {i.name}</span>
-                <span>${(i.unitPrice * i.quantity).toFixed(2)}</span>
+                <span>Ksh {(i.unitPrice * i.quantity).toFixed(2)}</span>
               </li>
             ))}
           </ul>
           <dl className="mt-4 space-y-2 border-t border-border pt-3 text-sm">
-            <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd>${subtotal.toFixed(2)}</dd></div>
-            <div className="flex justify-between"><dt className="text-muted-foreground">Tax</dt><dd>${tax.toFixed(2)}</dd></div>
+            <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd>Ksh {subtotal.toFixed(2)}</dd></div>
+            <div className="flex justify-between"><dt className="text-muted-foreground">Tax</dt><dd>Ksh {tax.toFixed(2)}</dd></div>
             <div className="mt-2 flex justify-between border-t border-border pt-3 text-base font-bold">
-              <dt>Total</dt><dd className="text-primary">${total.toFixed(2)}</dd>
+              <dt>Total</dt><dd className="text-primary">Ksh {total.toFixed(2)}</dd>
             </div>
           </dl>
           <button

@@ -36,7 +36,7 @@ function CartPage() {
               <div className="flex-1">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="font-semibold">{it.name}</h3>
-                  <span className="text-sm font-bold">${(it.unitPrice * it.quantity).toFixed(2)}</span>
+                  <span className="text-sm font-bold">Ksh {(it.unitPrice * it.quantity).toFixed(2)}</span>
                 </div>
                 {it.modifiers.length > 0 && (
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
@@ -70,10 +70,10 @@ function CartPage() {
         <aside className="h-fit rounded-2xl border border-border bg-card p-5">
           <h2 className="font-semibold">Order summary</h2>
           <dl className="mt-4 space-y-2 text-sm">
-            <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd>${subtotal.toFixed(2)}</dd></div>
-            <div className="flex justify-between"><dt className="text-muted-foreground">Tax (8%)</dt><dd>${tax.toFixed(2)}</dd></div>
+            <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd>Ksh {subtotal.toFixed(2)}</dd></div>
+            <div className="flex justify-between"><dt className="text-muted-foreground">Tax (8%)</dt><dd>Ksh {tax.toFixed(2)}</dd></div>
             <div className="mt-3 flex justify-between border-t border-border pt-3 text-base font-bold">
-              <dt>Total</dt><dd className="text-primary">${total.toFixed(2)}</dd>
+              <dt>Total</dt><dd className="text-primary">Ksh {total.toFixed(2)}</dd>
             </div>
           </dl>
           <Link to="/checkout" className="mt-5 block w-full rounded-full bg-primary py-3 text-center font-semibold text-primary-foreground shadow-glow">

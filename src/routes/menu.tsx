@@ -92,7 +92,7 @@ function MenuPage() {
             <div className="p-4">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="text-base font-semibold leading-tight">{m.name}</h3>
-                <span className="shrink-0 text-base font-bold text-primary">${m.price.toFixed(2)}</span>
+                <span className="shrink-0 text-base font-bold text-primary">Ksh {m.price.toFixed(2)}</span>
               </div>
               <p className="mt-1.5 line-clamp-2 text-sm text-muted-foreground">{m.description}</p>
               <div className="mt-3 flex items-center justify-between">
