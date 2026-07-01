@@ -60,6 +60,12 @@ export function AppHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
+          <Link
+            to="/loyalty"
+            className="hidden items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/10 sm:inline-flex"
+          >
+            <Sparkles className="size-3.5" /> Rewards
+          </Link>
           {unread > 0 && (
             <div className="relative grid size-9 place-items-center rounded-full bg-muted">
               <BellRing className="size-4 text-primary" />
