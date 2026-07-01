@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ShoppingCart, ChefHat, BellRing, LayoutDashboard, Utensils, Users } from "lucide-react";
+import { ShoppingCart, ChefHat, BellRing, LayoutDashboard, Utensils, Users, Sparkles } from "lucide-react";
 import { useStore, session } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
