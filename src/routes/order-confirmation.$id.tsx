@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { CheckCircle2, Printer, MapPin, User, Clock } from "lucide-react";
+import { CheckCircle2, Printer, MapPin, User, Clock, Sparkles } from "lucide-react";
 import { useStore } from "@/lib/store";
 import type { Order } from "@/types";
 
@@ -50,6 +50,22 @@ function Confirmation() {
           </Link>
         </div>
       </div>
+
+      <Link
+        to="/loyalty"
+        className="mt-6 flex items-center gap-4 overflow-hidden rounded-3xl p-5 text-primary-foreground shadow-glow transition hover:opacity-95"
+        style={{ background: "var(--gradient-primary)" }}
+      >
+        <div className="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/15">
+          <Sparkles className="size-6" />
+        </div>
+        <div className="flex-1">
+          <p className="text-xs font-bold uppercase tracking-wider text-white/80">Loyalty bonus</p>
+          <p className="text-lg font-bold">You earned +{order.loyaltyPointsEarned} points</p>
+          <p className="text-xs text-white/80">Tap to view rewards catalog & redeem →</p>
+        </div>
+        <p className="text-3xl font-black tabular-nums">+{order.loyaltyPointsEarned}</p>
+      </Link>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <Receipt order={order} type="customer" />
