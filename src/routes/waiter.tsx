@@ -15,7 +15,8 @@ function WaiterApp() {
   const waiters = staff.filter((s) => s.role === "waiter");
   const [waiterId, setWaiterId] = useState(waiters[0].id);
   const allOrders = useStore((s) => s.orders);
-  const notes = useStore((s) => s.notifications.filter((n) => n.userId === waiterId));
+  const allNotes = useStore((s) => s.notifications);
+  const notes = allNotes.filter((n) => n.userId === waiterId);
 
   const mine = allOrders.filter(
     (o) => o.waiterId === waiterId && o.status !== "completed" && o.status !== "cancelled",
