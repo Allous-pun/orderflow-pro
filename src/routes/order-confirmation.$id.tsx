@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { CheckCircle2, Printer, MapPin, User, Clock } from "lucide-react";
+import { CheckCircle2, Printer, MapPin, User, Clock, Sparkles } from "lucide-react";
 import { useStore } from "@/lib/store";
 import type { Order } from "@/types";
 
