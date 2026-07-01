@@ -122,7 +122,7 @@ function ItemDetail() {
                     >
                       <span className="font-medium">{o.name}</span>
                       <span className={cn("text-xs", checked ? "text-primary font-semibold" : "text-muted-foreground")}>
-                        {o.priceAdjustment > 0 ? `+$${o.priceAdjustment.toFixed(2)}` : "Free"}
+                        {o.priceAdjustment > 0 ? `+Ksh ${o.priceAdjustment.toFixed(2)}` : "Free"}
                       </span>
                     </button>
                   );

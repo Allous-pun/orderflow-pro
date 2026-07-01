@@ -58,10 +58,10 @@ function ManagerDashboard() {
       <p className="text-sm text-muted-foreground">Live performance across orders, kitchen, and revenue.</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPI label="Revenue (paid)" value={`$${stats.revenue.toFixed(2)}`} icon={DollarSign} tone="primary" />
+        <KPI label="Revenue (paid)" value={`Ksh ${stats.revenue.toFixed(2)}`} icon={DollarSign} tone="primary" />
         <KPI label="Active orders" value={stats.active} icon={ShoppingBag} tone="info" />
         <KPI label="Completed today" value={stats.completed} icon={Users} tone="success" />
-        <KPI label="Avg check" value={`$${stats.avg.toFixed(2)}`} icon={TrendingUp} tone="warning" />
+        <KPI label="Avg check" value={`Ksh ${stats.avg.toFixed(2)}`} icon={TrendingUp} tone="warning" />
       </div>
 
       <div className="mt-6 grid gap-5 lg:grid-cols-3">

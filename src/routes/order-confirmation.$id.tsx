@@ -96,7 +96,7 @@ function Receipt({ order, type }: { order: Order; type: "customer" | "cashier" }
       <div className="my-2 space-y-1.5">
         {order.items.map((i) => (
           <div key={i.cartId}>
-            <Row k={`${i.quantity}x ${i.name}`} v={`$${(i.unitPrice * i.quantity).toFixed(2)}`} />
+            <Row k={`${i.quantity}x ${i.name}`} v={`Ksh ${(i.unitPrice * i.quantity).toFixed(2)}`} />
             {i.modifiers.map((m) => (
               <p key={m.optionId} className="pl-2 text-muted-foreground">+ {m.name}</p>
             ))}
@@ -104,9 +104,9 @@ function Receipt({ order, type }: { order: Order; type: "customer" | "cashier" }
         ))}
       </div>
       <div className="border-t border-dashed border-border pt-2">
-        <Row k="Subtotal" v={`$${order.subtotal.toFixed(2)}`} />
-        <Row k="Tax" v={`$${order.tax.toFixed(2)}`} />
-        <Row k="TOTAL" v={`$${order.total.toFixed(2)}`} bold />
+        <Row k="Subtotal" v={`Ksh ${order.subtotal.toFixed(2)}`} />
+        <Row k="Tax" v={`Ksh ${order.tax.toFixed(2)}`} />
+        <Row k="TOTAL" v={`Ksh ${order.total.toFixed(2)}`} bold />
       </div>
       <p className="mt-3 text-center text-[11px] font-semibold uppercase">
         Payment: {order.paymentStatus === "paid" ? `PAID (${order.paymentMethod})` : "PENDING"}
