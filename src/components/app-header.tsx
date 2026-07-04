@@ -61,6 +61,12 @@ export function AppHeader() {
 
         <div className="ml-auto flex items-center gap-2">
           <Link
+            to="/setup"
+            className="hidden items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/10 sm:inline-flex"
+          >
+            <Wand2 className="size-3.5" /> Setup
+          </Link>
+          <Link
             to="/admin"
             className="hidden items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/10 sm:inline-flex"
           >
