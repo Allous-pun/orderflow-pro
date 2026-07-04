@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ShoppingCart, ChefHat, BellRing, LayoutDashboard, Utensils, Users, Sparkles, Shield } from "lucide-react";
+import { ShoppingCart, ChefHat, BellRing, LayoutDashboard, Utensils, Users, Sparkles, Shield, Wand2 } from "lucide-react";
 import { useStore, session } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
@@ -60,6 +60,12 @@ export function AppHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
+          <Link
+            to="/setup"
+            className="hidden items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/10 sm:inline-flex"
+          >
+            <Wand2 className="size-3.5" /> Setup
+          </Link>
           <Link
             to="/admin"
             className="hidden items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/10 sm:inline-flex"
