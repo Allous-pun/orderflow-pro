@@ -1,7 +1,10 @@
-import { Link } from "@tanstack/react-router";
-import { ShoppingCart, ChefHat, BellRing, LayoutDashboard, Utensils, Users, Sparkles, Shield, Wand2 } from "lucide-react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { ShoppingCart, ChefHat, BellRing, LayoutDashboard, Utensils, Users, Sparkles, Shield, Wand2, LogIn, LogOut } from "lucide-react";
 import { useStore, session } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { getSession, clearSession, type AuthSession } from "@/lib/mock-users";
+import { toast } from "sonner";
 
 const roles = [
   { id: "customer", label: "Customer", icon: Utensils, to: "/menu" },
@@ -17,6 +20,25 @@ export function AppHeader() {
   const unread = useStore(
     (s) => s.notifications.filter((n) => n.userId === activeUserId && !n.read).length,
   );
+
+  const [auth, setAuth] = useState<AuthSession | null>(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const sync = () => setAuth(getSession());
+    sync();
+    window.addEventListener("rf-auth-change", sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener("rf-auth-change", sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  function signOut() {
+    clearSession();
+    toast.success("Signed out");
+    navigate({ to: "/auth" });
+  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-border/60 bg-background/80 backdrop-blur-md">
@@ -98,6 +120,34 @@ export function AppHeader() {
               </span>
             )}
           </Link>
+
+          {auth ? (
+            <div className="flex items-center gap-2 rounded-full border border-border bg-card py-1 pl-1 pr-2">
+              <div className="grid size-7 place-items-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                {auth.name.slice(0, 1).toUpperCase()}
+              </div>
+              <div className="hidden text-xs leading-tight sm:block">
+                <div className="font-semibold">{auth.name.split(" ")[0]}</div>
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                  {auth.role}
+                </div>
+              </div>
+              <button
+                onClick={signOut}
+                title="Sign out"
+                className="ml-1 grid size-7 place-items-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground"
+              >
+                <LogOut className="size-3.5" />
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/auth"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-bold text-primary-foreground transition hover:opacity-90"
+            >
+              <LogIn className="size-3.5" /> Sign in
+            </Link>
+          )}
         </div>
       </div>
     </header>
