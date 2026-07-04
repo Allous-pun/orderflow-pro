@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WaiterRouteImport } from './routes/waiter'
+import { Route as SetupRouteImport } from './routes/setup'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as ManagerRouteImport } from './routes/manager'
 import { Route as LoyaltyRouteImport } from './routes/loyalty'
@@ -25,6 +26,11 @@ import { Route as ItemIdRouteImport } from './routes/item.$id'
 const WaiterRoute = WaiterRouteImport.update({
   id: '/waiter',
   path: '/waiter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SetupRoute = SetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MenuRoute = MenuRouteImport.update({
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/loyalty': typeof LoyaltyRoute
   '/manager': typeof ManagerRoute
   '/menu': typeof MenuRoute
+  '/setup': typeof SetupRoute
   '/waiter': typeof WaiterRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/loyalty': typeof LoyaltyRoute
   '/manager': typeof ManagerRoute
   '/menu': typeof MenuRoute
+  '/setup': typeof SetupRoute
   '/waiter': typeof WaiterRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/loyalty': typeof LoyaltyRoute
   '/manager': typeof ManagerRoute
   '/menu': typeof MenuRoute
+  '/setup': typeof SetupRoute
   '/waiter': typeof WaiterRoute
   '/item/$id': typeof ItemIdRoute
   '/order-confirmation/$id': typeof OrderConfirmationIdRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/loyalty'
     | '/manager'
     | '/menu'
+    | '/setup'
     | '/waiter'
     | '/item/$id'
     | '/order-confirmation/$id'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/loyalty'
     | '/manager'
     | '/menu'
+    | '/setup'
     | '/waiter'
     | '/item/$id'
     | '/order-confirmation/$id'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/loyalty'
     | '/manager'
     | '/menu'
+    | '/setup'
     | '/waiter'
     | '/item/$id'
     | '/order-confirmation/$id'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   LoyaltyRoute: typeof LoyaltyRoute
   ManagerRoute: typeof ManagerRoute
   MenuRoute: typeof MenuRoute
+  SetupRoute: typeof SetupRoute
   WaiterRoute: typeof WaiterRoute
   ItemIdRoute: typeof ItemIdRoute
   OrderConfirmationIdRoute: typeof OrderConfirmationIdRoute
@@ -193,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/waiter'
       fullPath: '/waiter'
       preLoaderRoute: typeof WaiterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setup': {
+      id: '/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof SetupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/menu': {
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoyaltyRoute: LoyaltyRoute,
   ManagerRoute: ManagerRoute,
   MenuRoute: MenuRoute,
+  SetupRoute: SetupRoute,
   WaiterRoute: WaiterRoute,
   ItemIdRoute: ItemIdRoute,
   OrderConfirmationIdRoute: OrderConfirmationIdRoute,
@@ -292,13 +313,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
